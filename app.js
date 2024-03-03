@@ -4,8 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
 
+//var productRouter = require('./routes/shop')
+var indexRouter = require('./routes/index')
+var productsRouter = require('./routes/products')
 var app = express();
 
 // view engine setup
@@ -19,6 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/shop', productsRouter)
 
 
 // catch 404 and forward to error handler
