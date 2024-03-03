@@ -3,11 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose')
+mongoose.set('strictQuery', false)
+const mongoDB = "mongodb+srv://tusharsandhu:Learn2023@cluster0.iz9qxku.mongodb.net/productsDB?retryWrites=true&w=majority";
 
 
-//var productRouter = require('./routes/shop')
 var indexRouter = require('./routes/index')
 var productsRouter = require('./routes/products')
+
+
 var app = express();
 
 // view engine setup
@@ -20,8 +24,24 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+createConnection().catch(err => console.log("FAILED TO CONNECT TO THE DB: ", err))
+async function createConnection(){
+  await mongoose.connect(mongoDB);
+}
+
+
+
+
+
 app.use('/', indexRouter);
 app.use('/shop', productsRouter)
+
+
+
+
+
+
 
 
 // catch 404 and forward to error handler

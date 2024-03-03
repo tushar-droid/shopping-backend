@@ -3,3 +3,13 @@ extends layout
 block content 
 
     h1= title
+
+    if all_products.length 
+        ul 
+            for product in all_products 
+                h3= product.name
+                for category in product.categories
+                    p= category.name
+    else 
+        p There are NO products in SHOP
+    

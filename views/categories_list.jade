@@ -3,3 +3,11 @@ extends layout
 block content 
 
     h1= title
+
+    if all_categories.length 
+        ul 
+            for category in all_categories
+                li= category.name
+
+    else 
+        p THere are no categories
