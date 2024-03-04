@@ -5,11 +5,17 @@ block content
     h1= title
 
     if all_products.length 
-        ul 
+        ul(class='products-list') 
+            
             for product in all_products 
-                h3= product.name
-                for category in product.categories
-                    p= category.name
+                a(href=product.url) 
+                    li    
+                        h3(class='product-list-title') #{product.name}
+                        if product.image.length
+                            img(src=product.image class='prod-list-image')
+                        div(class='product-list-details') 
+                            p(class='rating-in-list') Rating: #{product.rating}
+                            p(class='price-in-list') Price:  $#{product.price}
     else 
         p There are NO products in SHOP
     

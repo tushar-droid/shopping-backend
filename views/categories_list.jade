@@ -7,7 +7,9 @@ block content
     if all_categories.length 
         ul 
             for category in all_categories
-                li= category.name
+                //- li= category.name
+                li 
+                    a(href=category.url) #{category.name} 
 
     else 
-        p THere are no categories
+        p There are no categories

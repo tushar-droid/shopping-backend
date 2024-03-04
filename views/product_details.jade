@@ -1,0 +1,18 @@
+extends layout 
+block content 
+
+    if product_information 
+        h1= product_information.name
+        p= product_information.brand
+        p Rating:  #{product_information.rating}
+        p Categories
+        ul 
+            for category in product_information.categories
+                li= category.name
+            if !product_information.in_stock
+                p(class='no-stock') OUT OF STOCK
+            
+            h3 Price:  $#{product_information.price}        
+        
+    else 
+        p product not found
