@@ -4,6 +4,11 @@ block content
 
     h1= title
 
+    if category
+        button  
+            a(href= category.url + '/delete') Delete 
+
+
     if all_products.length 
         ul(class='products-list') 
             
