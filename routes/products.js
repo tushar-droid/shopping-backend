@@ -16,6 +16,8 @@ router.post('/products/:id/delete', productController.delete_product_post);
 
 //CATEGORY ROUTES
 router.get('/categories', categoriesController.categories_list);
+router.get('/categories/add', categoriesController.add_category_get);
+router.post('/categories/add', categoriesController.add_category_post);
 router.get('/categories/:id', categoriesController.products_in_category);
 router.get('/categories/:id/delete', categoriesController.category_delete_get);
 router.post('/categories/:id/delete', categoriesController.category_delete_post);
