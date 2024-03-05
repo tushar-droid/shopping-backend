@@ -16,5 +16,8 @@ exports.products_in_category = asyncHandler(async(req, res, next) =>{
         Category.findById(req.params.id).exec()
     ])
 
-    res.render("product_in_category", {title: category_name.name, products: products});
+    res.render('products_list', {
+        title: category_name.name, 
+        all_products: products,
+    });
 })

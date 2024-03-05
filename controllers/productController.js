@@ -24,4 +24,15 @@ exports.product_details = asyncHandler(async(req,res,next) =>{
         title: 'Product Details',
         product_information
     })
+});
+
+
+exports.delete_product_get = asyncHandler(async(req,res,next) =>{
+    const product = await Product.findById(req.params.id, "name").exec();
+    res.render("delete_product", {title: "Delete Product", product: product})
+})
+
+exports.delete_product_post = asyncHandler(async(req,res,next) =>{
+    await Product.findByIdAndDelete(req.body.product_id);
+    res.redirect('/shop/products')
 })

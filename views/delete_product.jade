@@ -1,0 +1,16 @@
+extends layout 
+
+block content 
+
+    h1= title 
+
+    h3= product.name
+
+    h3 Are you  sure you want to delete the product?
+
+    form(method='POST')
+        input(type='hidden', name='product_id', value = product._id)
+        button(type='submit') Delete 
+
+    button  
+        a(href= product.url) Cancel 

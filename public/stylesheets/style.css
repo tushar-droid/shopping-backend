@@ -60,3 +60,22 @@ ul{
   object-fit:cover;
   border-radius: 12px;
 }
+
+.product-details{
+  height: 80vh;
+  width:80vw;
+  display: flex;
+  
+  align-items: center;
+  justify-content:space-evenly;
+  background-color: #100d29;
+  border-radius: 12px;
+
+}
+
+.product-details > img{
+  height: 70%;
+  width: auto;
+  object-fit:cover;
+  border-radius: 12px;
+}
