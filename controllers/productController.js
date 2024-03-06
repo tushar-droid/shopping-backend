@@ -39,5 +39,6 @@ exports.delete_product_post = asyncHandler(async(req,res,next) =>{
 
 
 exports.add_product_get = asyncHandler(async(req, res, next) =>{
-    res.render('add_product', {title: 'Here you will add a new product.'})
+    const categories = await Category.find({}).sort({name: 1}).exec();
+    res.render('add_product', {title: 'Here you will add a new product.', categories})
 })

@@ -3,3 +3,38 @@ extends layout
 block content 
 
     h1= title
+
+    form(class='add-product-form', action="POST")
+        div
+            label(for="product_name") Product Name: 
+            input(type:'text', name='product_name' required value=(undefined===product ? '': product.name))
+        div 
+            input(type="radio" id='in_stock' name='stock_status', value='in_stock', checked)
+            label(for="in_stock") Item is in Stock  
+        div 
+            input(type="radio" id='not_in_stock' name='stock_status', value='not_in_stock')
+            label(for="not_in_stock") Item is NOT in Stock 
+        div 
+            label(for="price") Product Price: 
+            input(type:'number', name='price' required value=(undefined===product ? '': product.price))
+        div 
+            label(for="image_url") Image URL: 
+            input(type:'text', name='image_url' required value=(undefined===product ? '': product.image))
+        div 
+            label(for="brand") Brand Name: 
+            input(type:'text', name='brand' required value=(undefined===product ? '': product.brand))
+        div 
+            label(for="rating") Product Rating: 
+            input(type:'number', name='rating' required value=(undefined===product ? '': product.rating))            
+        div(style='display:grid; grid-template-columns: repeat(4, 1fr);')
+            for category in categories                
+                if category.checked     
+                    input.checkbox-input(type='checkbox', name= 'category', id=category._id, value=category._id, checked)
+                else 
+                    input.checkbox-input(type='checkbox', name= 'category', id=category._id, value=category._id)
+                label(for=category._id) &nbsp;#{category.name} 
+                    
+
+
+
+        button(type='submit')  Add Product

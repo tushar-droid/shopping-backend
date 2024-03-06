@@ -150,6 +150,9 @@ button:hover{
   height: 100%;
   top: 10rem;
 }
+.sidebar-nav li{
+  transition: all 0.1s ease;
+}
 
 .sidebar-nav li:hover{
   background-color: #4d42b26f;
@@ -158,4 +161,11 @@ button:hover{
 
 li.hr:hover{
   background-color: unset;
+}
+
+
+.add-product-form{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
