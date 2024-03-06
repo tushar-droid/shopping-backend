@@ -2,12 +2,13 @@
 const asyncHandler = require('express-async-handler');
 const Product = require('../models/product');
 const Category = require('../models/categories')
+const { body, validationResult } = require('express-validator')
 
 exports.products_list = asyncHandler(async(req, res, next) =>{
 
     //GET ALL THE PRODUCTS LISTINGS FROM THE DB AND SHOW ONLY NAME AND CATEGORIES, THEN POPULATE THE CATEGORIES SECTION USING THE OBJECTID AND REFERENCE
 
-    const all_products = await Product.find({} ).populate('categories').exec();
+    const all_products = await Product.find({}).populate('categories').exec();
     
     //RENDER THE PRODUCTS LIST VIEW AND SEND THE TITLE AND THE ALL_PRODUCTS LIST 
     res.render('products_list', {
@@ -40,5 +41,53 @@ exports.delete_product_post = asyncHandler(async(req,res,next) =>{
 
 exports.add_product_get = asyncHandler(async(req, res, next) =>{
     const categories = await Category.find({}).sort({name: 1}).exec();
-    res.render('add_product', {title: 'Here you will add a new product.', categories})
-})
+    res.render('add_product', {title: 'Add a new product.', categories})
+});
+
+exports.add_product_post = [
+    body("product_name", "Title should be more than 2 letters")
+        .trim()
+        .isLength({min: 2})
+        .escape(),
+    body("price")
+        .trim()
+        .isNumeric()
+        .escape(),
+    body('brand',"brand should be more than 2 letters" )
+        .trim()
+        .isLength({min: 2})
+        .escape(),
+    body('rating')
+        .trim()
+        .isNumeric()
+        .escape(),
+    body("category", "There should be atleast 1 category related to the product")
+        .notEmpty(),
+    asyncHandler(async(req, res, next) =>{
+        const errors = validationResult(req);
+        const categories = await Category.find({}).sort({name: 1}).exec();
+        const product = new Product({
+            name: req.body.product_name,
+            categories: req.body.category,
+            in_stock: req.body.stock_status ==='in_stock' ? true : false,
+            price: req.body.price,
+            image: req.body.image_url,
+            brand: req.body.brand,
+            rating: req.body.rating
+        });
+
+
+        if(!errors.isEmpty()){
+            res.render("add_product",{
+                title: 'Add a new product',
+                categories,
+                product,
+                errors: errors.array()
+            });
+            return
+        }else{
+            await product.save();
+            res.redirect('/shop/products')
+        }
+    })
+]

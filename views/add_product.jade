@@ -4,7 +4,7 @@ block content
 
     h1= title
 
-    form(class='add-product-form', action="POST")
+    form(class='add-product-form', method="POST")
         div
             label(for="product_name") Product Name: 
             input(type:'text', name='product_name' required value=(undefined===product ? '': product.name))
@@ -19,7 +19,7 @@ block content
             input(type:'number', name='price' required value=(undefined===product ? '': product.price))
         div 
             label(for="image_url") Image URL: 
-            input(type:'text', name='image_url' required value=(undefined===product ? '': product.image))
+            input(type:'url', name='image_url' required value=(undefined===product ? '': product.image), )
         div 
             label(for="brand") Brand Name: 
             input(type:'text', name='brand' required value=(undefined===product ? '': product.brand))
@@ -32,9 +32,10 @@ block content
                     input.checkbox-input(type='checkbox', name= 'category', id=category._id, value=category._id, checked)
                 else 
                     input.checkbox-input(type='checkbox', name= 'category', id=category._id, value=category._id)
-                label(for=category._id) &nbsp;#{category.name} 
-                    
-
-
-
+                label(for=category._id) &nbsp;#{category.name}                 
         button(type='submit')  Add Product
+
+    
+    if errors   
+        for error in errors 
+            li!= error.msg
