@@ -18,6 +18,9 @@ block content
                     h3 Price:  $#{product_information.price}        
         else 
             p product not found
-    button  
-        a(href= product_information.url+'/delete') Delete
-        
+    div 
+        button  
+            a(href= product_information.url+'/delete') Delete
+        button  
+            a(href= product_information.url+'/update') Update
+    

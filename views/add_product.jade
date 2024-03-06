@@ -33,7 +33,10 @@ block content
                 else 
                     input.checkbox-input(type='checkbox', name= 'category', id=category._id, value=category._id)
                 label(for=category._id) &nbsp;#{category.name}                 
-        button(type='submit')  Add Product
+        if updating
+            button(type='submit') Update
+        else
+            button(type='submit') Add Product
 
     
     if errors   
