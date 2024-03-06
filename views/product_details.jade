@@ -16,8 +16,8 @@ block content
                         p(class='no-stock') OUT OF STOCK
                     
                     h3 Price:  $#{product_information.price}        
-            button  
-                a(href= product_information.url+'/delete') Delete
         else 
             p product not found
+    button  
+        a(href= product_information.url+'/delete') Delete
         

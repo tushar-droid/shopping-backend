@@ -3,5 +3,27 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='preconnect',  href="https://fonts.gstatic.com", crossorigin )
+    link(rel='preconnect',  href="https://fonts.googleapis.com" )
+    link(href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap", rel="stylesheet")
+
   body
-    block content
+    block sidebar
+            ul(class='sidebar-nav')
+              li
+                a(href='/shop') Home
+              li
+                a(href='/shop/products') All Products
+              li
+                a(href='/shop/categories') All Categories
+              li(class='hr')
+                hr
+              li
+                a(href='/shop/categories/add') Create new Category
+              li
+                a(href='/shop/products/add') Add new Product
+
+
+
+    div(class='main-content')
+      block content

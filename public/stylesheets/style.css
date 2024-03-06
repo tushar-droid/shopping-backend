@@ -1,12 +1,31 @@
+.dm-serif display-regular {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-serif display-regular-italic {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+*{
+  font-family: 'DM Serif Display';
+
+}
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #02010a;
   color: white;
+  display: flex;
+  position: relative;
 }
 
 a {
-  color: #00B7FF;
+  color: white;
+  text-decoration: none;
 }
 
 ul{
@@ -20,8 +39,8 @@ ul{
 .products-list{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  grid-auto-rows: 22vw;
+  gap: 2rem;
+  grid-auto-rows: 20vw;
 }
 
 .products-list  li {
@@ -31,7 +50,15 @@ ul{
   flex-direction: column;
   background-color: #100d29;
   border-radius: 12px;
+  transition: all 0.1s ease-in-out;
 }
+
+.products-list  li:hover{
+  transform: scale(1.1);
+}
+
+
+
 
 .products-list a {
   text-decoration: none;
@@ -63,19 +90,72 @@ ul{
 
 .product-details{
   height: 80vh;
-  width:80vw;
+  width:50vw;
   display: flex;
-  
   align-items: center;
   justify-content:space-evenly;
   background-color: #100d29;
   border-radius: 12px;
-
+  margin-bottom: 5vh;
 }
 
 .product-details > img{
   height: 70%;
-  width: auto;
-  object-fit:cover;
-  border-radius: 12px;
+  width: 40%;
+  
+  object-fit:contain;
+  
+}
+
+.main-content{
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+button {
+  background-color: #4d42b26f;
+  color: whtie;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 10rem;
+  cursor: pointer;
+  margin: 2rem;
+  color: white;
+}
+
+button.delete{
+  background-color: rgb(255, 68, 68);
+  color: white;
+}
+
+button.delete:hover{
+  background-color: rgb(255, 0, 0);
+}
+
+button:hover{
+  background-color: #4d42b2;
+}
+
+.sidebar-nav{
+  display: flex;
+  padding-left: 0;
+  flex-direction: column;
+  position: sticky;
+  height: 100%;
+  top: 10rem;
+}
+
+.sidebar-nav li:hover{
+  background-color: #4d42b26f;
+  transform: translateX(2%)
+}
+
+li.hr:hover{
+  background-color: unset;
 }

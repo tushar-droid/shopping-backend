@@ -35,4 +35,9 @@ exports.delete_product_get = asyncHandler(async(req,res,next) =>{
 exports.delete_product_post = asyncHandler(async(req,res,next) =>{
     await Product.findByIdAndDelete(req.body.product_id);
     res.redirect('/shop/products')
+});
+
+
+exports.add_product_get = asyncHandler(async(req, res, next) =>{
+    res.render('add_product', {title: 'Here you will add a new product.'})
 })
