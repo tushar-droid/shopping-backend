@@ -6,7 +6,7 @@ router.get('/', asyncHandler(async(req,res,next) =>{
     res.redirect('/shop')
 }))
 router.get('/shop', asyncHandler(async(req,res,next) =>{
-    res.render('index', {title: 'Shop'})
+    res.render('index', {title: 'Welcome to the Inventory App'})
 }))
 
 

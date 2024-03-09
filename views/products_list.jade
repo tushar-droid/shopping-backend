@@ -15,7 +15,7 @@ block content
             for product in all_products 
                 a(href=product.url) 
                     li    
-                        h4(class='product-list-title') #{product.name}
+                        h3(class='product-list-title') #{product.name}
                         if product.image.length
                             img(src=product.image class='prod-list-image')
                         div(class='product-list-details') 
